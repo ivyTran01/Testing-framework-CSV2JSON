@@ -1,0 +1,39 @@
+1. Identify the components:
+- The cvs2json converter program
+
+2. Identify the parameters:
+- The input CSV file (and its contents)
+
+3. Identify the characteristics of the input space:
+- CSV file header:
+    + Is present
+    + Is not present
+- CSV file delimiter:
+    + Comma
+    + Semicolon
+    + Tab
+- CSV file empty cells:
+    + Empty cells present as ""
+    + Empty cells present as null
+    + No empty cells
+- CSV file leading whitespace:
+    + Present
+    + Not present
+- CSV file trailing whitespace:
+    + Present
+    + Not present
+- CVS file value quoting:
+    + Value is not quoted
+    + Strings are quoted
+    + All values are quoted
+- CSV file double-quote escape characters:
+    + Double-quotes are used
+    + Double-quotes not used
+- CSV file single-quote escape characters:
+    + Single-quotes are used
+    + Single-quotes not used
+- CSV file special character/delimiter inside a value:
+    + Special character/delimiter present in a value
+    + No special character/delimiter inside a value
+
+4. Present the input domain model with constraints:
