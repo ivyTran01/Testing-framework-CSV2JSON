@@ -6,15 +6,66 @@ CSV file specifications:
     + comma [,] is the most common delimiter.
     + semicolons [;] or tabs [\t] can also be used (especially when the values contain decimals)
     + only one designated delimiter allowed in one CSV file.
+- Line endings:
+    + Each row in terminated with a new line character.
+    + The last row of the file may or may not end with a line break character.
 - Row:
     + Each row contains data of one record.
+    + Each row should contain the same number of field.
     + Values of this record is separated with the designated delimiter.
     + Each value in the row matches with the corresponding column name (specified in the header row).
     + Each value in the row matches with its position in the row if there are no column names.
+- Quoting:
+    + Use double quotes ["] on values that contain special characters such as the delimiter itself.
+- Escape characters:
+    + If a quoted value needs to have double quotes within it, then these inner quotes can be escaped by doubling them.
+    + Single-quotes is equivalent to double-quotes for escaping.
+- Leading/trailing whitespace:
+    + Whitespaces are part of the data and shall not be trimmed automatically.
+    + If whitespace at the beginning and end of a textual field value is significant, the text string should be text-qualified, i.e. enclosed in quotes.
+- Empty cells:
+    + Represented by an empty string "", or as null.
+    + Each row should contain the same number of field.
 
-
+Sources:
+https://www.loc.gov/preservation/digital/formats/fdd/fdd000323.shtml#:~:text=CSV%20is%20a%20simple%20format,characters%20indicating%20a%20line%20break.
+http://super-csv.github.io/super-csv/csv_specification.html
+https://www.csvreader.com/csv_format.php
+https://www.creativyst.com/Doc/Articles/CSV/CSV01.shtml
+https://datatracker.ietf.org/doc/html/rfc4180
 
 ---------------------------------------------------------
 
 JSON file specifications:
--
+- Data types:
+    + Strings: "hello"
+    + Numbers: 11 or 5.78
+    + Booleans: true, false
+    + Objects {}
+    + Arrays []
+    + null
+- Object:
+    + An unordered collection of items in the form of key-value pairs.
+    + Items in an object are separated by commas [,]
+- Object item (key-value pair):
+    + Keys must be strings, enclosed in double-quotes.
+    + Values can be any of the data types specified above (strings, numbers, objects, arrays, etc.)
+    + A key and its value are separated by a colon [:]
+- Array:
+    + An ordered list of values
+    + Values of an array can be a mix of any data type.
+    + Array elements are separated by commas
+- Escape characters:
+    + Special characters in a string but be escaped using a backlash [\] before the character.
+- Whitespace:
+    + JSON allows whitespace such as tabs, line breaks, etc. for readability.
+    + Whitespace should not affect the data content itself.
+- Root value:
+    + Every JSON file has a single root value.
+    + This root value can any data type specified above.
+- Case sensitivity:
+    + JSON is case-sensitive.
+
+Sources:
+https://docs.fileformat.com/web/json/#:~:text=Standard%20STD%2090.-,JSON%20File%20Structure,marks%20for%20example%20%E2%80%9Cname%E2%80%9D.
+https://www.rfc-editor.org/rfc/rfc8259
