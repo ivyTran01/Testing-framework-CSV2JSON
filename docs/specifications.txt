@@ -1,0 +1,20 @@
+CSV file specifications:
+- Header:
+    + The first row, containing column names.
+    + This row is optional.
+- Delimiter:
+    + comma [,] is the most common delimiter.
+    + semicolons [;] or tabs [\t] can also be used (especially when the values contain decimals)
+    + only one designated delimiter allowed in one CSV file.
+- Row:
+    + Each row contains data of one record.
+    + Values of this record is separated with the designated delimiter.
+    + Each value in the row matches with the corresponding column name (specified in the header row).
+    + Each value in the row matches with its position in the row if there are no column names.
+
+
+
+---------------------------------------------------------
+
+JSON file specifications:
+-
