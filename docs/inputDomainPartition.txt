@@ -65,11 +65,11 @@
     + Present                                       [If NonEmptyFile]
     + Not present
 - CVS file value quoting:
-    + Value is not quoted                           [If NonEmptyFile && NoSpecialCharacter]
+    + Value is not quoted                           [If NonEmptyFile && NoSpecialCharacter] [Property ValueNotQuoted]
     + All values are quoted                         [Property ValueQuoted]
 - CSV file double-quote escape characters:
     + Double-quotes are used                        [If ValueQuoted && InnerQuotes]
-    + Double-quotes not used                        [If NonEmptyFile && NoInnerQuotes]
+    + Double-quotes not used                        [If NonEmptyFile && ((ValueQuoted && NoInnerQuotes) || ValueNotQuoted)]
 - CSV file single-quote escape characters:
     + Single-quotes are used                        [If ValueQuoted && InnerQuotes]
     + Single-quotes not used                        [If NonEmptyFile && NoInnerQuotes]

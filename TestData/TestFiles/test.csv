@@ -1,0 +1,4 @@
+name, age, some_bool
+"ivy", 22, true
+tanzil, 25, false
+abdullah, null, true
