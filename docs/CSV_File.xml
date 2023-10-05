@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<System name="CSV_File">
+  <Parameters>
+    <Parameter id="0" name="file_size" type="0">
+      <values>
+        <value>0</value>
+        <value>1</value>
+        <value>2</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="1" name="file_header" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="3" name="file_delimiter" type="1">
+      <values>
+        <value>comma</value>
+        <value>semicolon</value>
+        <value>tab</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="4" name="value_contains_special_character" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="5" name="value_contains_quotes" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="6" name="value_empty_string" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="7" name="value_null" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="8" name="value_leading_whitespace" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="9" name="value_trailing_whitespace" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="10" name="value_quoted" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="11" name="value_contains_escape_double_quotes" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="12" name="file_space_after_delimiter" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+  </Parameters>
+  <OutputParameters />
+  <Relations />
+  <Constraints>
+    <Constraint text="(value_null = true) =&gt; ((file_size = 1 &amp;&amp; file_header = false) || file_size = 2)">
+      <Parameters>
+        <Parameter name="value_null" />
+        <Parameter name="file_size" />
+        <Parameter name="file_header" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(file_size = 0) =&gt; (file_header = false &#xD;&#xA;&amp;&amp; file_delimiter = &quot;comma&quot; &#xD;&#xA;&amp;&amp; value_contains_special_character = false &#xD;&#xA;&amp;&amp; value_contains_quotes = false &#xD;&#xA;&amp;&amp; value_empty_string = false &#xD;&#xA;&amp;&amp; value_null = false &#xD;&#xA;&amp;&amp; value_leading_whitespace = false &#xD;&#xA;&amp;&amp; value_trailing_whitespace = false &#xD;&#xA;&amp;&amp; value_quoted = false &#xD;&#xA;&amp;&amp; value_contains_escape_double_quotes = false)">
+      <Parameters>
+        <Parameter name="file_size" />
+        <Parameter name="file_header" />
+        <Parameter name="file_delimiter" />
+        <Parameter name="value_contains_special_character" />
+        <Parameter name="value_contains_quotes" />
+        <Parameter name="value_empty_string" />
+        <Parameter name="value_null" />
+        <Parameter name="value_leading_whitespace" />
+        <Parameter name="value_trailing_whitespace" />
+        <Parameter name="value_quoted" />
+        <Parameter name="value_contains_escape_double_quotes" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(value_empty_string = true) =&gt; ((file_size = 1 &amp;&amp; file_header = false) || file_size = 2)">
+      <Parameters>
+        <Parameter name="value_empty_string" />
+        <Parameter name="file_size" />
+        <Parameter name="file_header" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(value_leading_whitespace = true) =&gt; (file_size != 0)">
+      <Parameters>
+        <Parameter name="value_leading_whitespace" />
+        <Parameter name="file_size" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(value_trailing_whitespace = true) =&gt; (file_size != 0)">
+      <Parameters>
+        <Parameter name="value_trailing_whitespace" />
+        <Parameter name="file_size" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(value_quoted = false) =&gt; (file_size != 0 &amp;&amp; value_contains_special_character = false)">
+      <Parameters>
+        <Parameter name="value_quoted" />
+        <Parameter name="file_size" />
+        <Parameter name="value_contains_special_character" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(value_contains_escape_double_quotes = true) =&gt; (value_quoted = true &amp;&amp; value_contains_quotes = true)">
+      <Parameters>
+        <Parameter name="value_contains_escape_double_quotes" />
+        <Parameter name="value_quoted" />
+        <Parameter name="value_contains_quotes" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(value_contains_escape_double_quotes = false) =&gt; (&#xD;&#xA;file_size != 0 &amp;&amp;&#xD;&#xA;(value_quoted = false ||&#xD;&#xA;(value_quoted = true &amp;&amp; value_contains_quotes = false))&#xD;&#xA;)">
+      <Parameters>
+        <Parameter name="value_contains_escape_double_quotes" />
+        <Parameter name="file_size" />
+        <Parameter name="value_quoted" />
+        <Parameter name="value_contains_quotes" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(value_null = true) =&gt; (value_contains_special_character = false &amp;&amp; &#xD;&#xA;value_contains_quotes = false &amp;&amp;&#xD;&#xA;value_empty_string = false &amp;&amp;&#xD;&#xA;value_leading_whitespace = false &amp;&amp;&#xD;&#xA;value_trailing_whitespace = false &amp;&amp;&#xD;&#xA;value_quoted = false &amp;&amp;&#xD;&#xA;value_contains_escape_double_quotes = false)">
+      <Parameters>
+        <Parameter name="value_null" />
+        <Parameter name="value_contains_special_character" />
+        <Parameter name="value_contains_quotes" />
+        <Parameter name="value_empty_string" />
+        <Parameter name="value_leading_whitespace" />
+        <Parameter name="value_trailing_whitespace" />
+        <Parameter name="value_quoted" />
+        <Parameter name="value_contains_escape_double_quotes" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(value_empty_string = true) =&gt; (value_contains_special_character = false &amp;&amp;&#xD;&#xA;value_contains_quotes = false &amp;&amp;&#xD;&#xA;value_null = false &amp;&amp;&#xD;&#xA;value_leading_whitespace = false &amp;&amp;&#xD;&#xA;value_trailing_whitespace = false &amp;&amp;&#xD;&#xA;value_quoted = false &amp;&amp;&#xD;&#xA;value_contains_escape_double_quotes = false)">
+      <Parameters>
+        <Parameter name="value_empty_string" />
+        <Parameter name="value_contains_special_character" />
+        <Parameter name="value_contains_quotes" />
+        <Parameter name="value_null" />
+        <Parameter name="value_leading_whitespace" />
+        <Parameter name="value_trailing_whitespace" />
+        <Parameter name="value_quoted" />
+        <Parameter name="value_contains_escape_double_quotes" />
+      </Parameters>
+    </Constraint>
+  </Constraints>
+  <Testset doi="2">
+    <Testcase TCNo="0">
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>false</Value>
+      <Value>comma</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+    </Testcase>
+    <Testcase TCNo="1">
+      <Value>2</Value>
+      <Value>1</Value>
+      <Value>true</Value>
+      <Value>semicolon</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+    </Testcase>
+    <Testcase TCNo="2">
+      <Value>3</Value>
+      <Value>1</Value>
+      <Value>false</Value>
+      <Value>tab</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+    </Testcase>
+    <Testcase TCNo="3">
+      <Value>4</Value>
+      <Value>2</Value>
+      <Value>true</Value>
+      <Value>comma</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+    </Testcase>
+    <Testcase TCNo="4">
+      <Value>5</Value>
+      <Value>2</Value>
+      <Value>false</Value>
+      <Value>semicolon</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+    </Testcase>
+    <Testcase TCNo="5">
+      <Value>6</Value>
+      <Value>2</Value>
+      <Value>true</Value>
+      <Value>tab</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+    </Testcase>
+    <Testcase TCNo="6">
+      <Value>7</Value>
+      <Value>2</Value>
+      <Value>false</Value>
+      <Value>comma</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+    </Testcase>
+    <Testcase TCNo="7">
+      <Value>8</Value>
+      <Value>2</Value>
+      <Value>true</Value>
+      <Value>semicolon</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+    </Testcase>
+    <Testcase TCNo="8">
+      <Value>9</Value>
+      <Value>1</Value>
+      <Value>false</Value>
+      <Value>comma</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+    </Testcase>
+    <Testcase TCNo="9">
+      <Value>10</Value>
+      <Value>2</Value>
+      <Value>true</Value>
+      <Value>tab</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+    </Testcase>
+    <Testcase TCNo="10">
+      <Value>11</Value>
+      <Value>2</Value>
+      <Value>true</Value>
+      <Value>comma</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+    </Testcase>
+    <Testcase TCNo="11">
+      <Value>12</Value>
+      <Value>1</Value>
+      <Value>false</Value>
+      <Value>semicolon</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+    </Testcase>
+    <Testcase TCNo="12">
+      <Value>13</Value>
+      <Value>1</Value>
+      <Value>false</Value>
+      <Value>tab</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+    </Testcase>
+    <Testcase TCNo="13">
+      <Value>14</Value>
+      <Value>1</Value>
+      <Value>false</Value>
+      <Value>tab</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+    </Testcase>
+    <Testcase TCNo="14">
+      <Value>15</Value>
+      <Value>1</Value>
+      <Value>true</Value>
+      <Value>tab</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+    </Testcase>
+  </Testset>
+  <Header>
+    <Value />
+    <Value>FILE_SIZE</Value>
+    <Value>FILE_HEADER</Value>
+    <Value>FILE_DELIMITER</Value>
+    <Value>VALUE_CONTAINS_SPECIAL_CHARACTER</Value>
+    <Value>VALUE_CONTAINS_QUOTES</Value>
+    <Value>VALUE_EMPTY_STRING</Value>
+    <Value>VALUE_NULL</Value>
+    <Value>VALUE_LEADING_WHITESPACE</Value>
+    <Value>VALUE_TRAILING_WHITESPACE</Value>
+    <Value>VALUE_QUOTED</Value>
+    <Value>VALUE_CONTAINS_ESCAPE_DOUBLE_QUOTES</Value>
+    <Value>FILE_SPACE_AFTER_DELIMITER</Value>
+  </Header>
+  <Stat-Data>
+    <ExecutionTime>0.03</ExecutionTime>
+    <MaxDomainSize>3</MaxDomainSize>
+    <MinDomainSize>2</MinDomainSize>
+    <TotalNoOfCombination>270</TotalNoOfCombination>
+    <TotalNoOfTests>15</TotalNoOfTests>
+    <Algorithm>IPOG</Algorithm>
+  </Stat-Data>
+</System>
+

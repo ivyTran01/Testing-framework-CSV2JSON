@@ -1,0 +1,16 @@
+file_size,file_header,file_delimiter,value_contains_special_character,value_contains_quotes,value_empty_string,value_null,value_leading_whitespace,value_trailing_whitespace,value_quoted,value_contains_escape_double_quotes,file_space_after_delimiter
+1,false,comma,false,false,false,false,false,false,false,false,false
+1,true,semicolon,true,true,false,false,true,true,true,true,true
+1,false,tab,true,false,false,false,true,false,true,false,true
+2,true,comma,false,true,false,false,false,true,false,false,true
+2,false,semicolon,true,false,false,false,false,false,true,false,false
+2,true,tab,false,true,false,false,true,false,false,false,false
+2,false,comma,true,true,false,false,true,true,true,true,false
+2,true,semicolon,false,false,true,false,false,false,false,false,true
+1,false,comma,false,false,true,false,false,false,false,false,false
+2,true,tab,false,false,true,false,false,false,false,false,false
+2,true,comma,false,false,false,true,false,false,false,false,true
+1,false,semicolon,false,false,false,true,false,false,false,false,false
+1,false,tab,false,false,false,true,false,false,false,false,true
+1,false,tab,false,false,false,false,false,true,true,false,true
+1,true,tab,false,true,false,false,false,false,true,true,false

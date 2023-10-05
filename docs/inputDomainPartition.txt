@@ -48,28 +48,30 @@
     + Comma                                         [Property DelimiterComma]
     + Semicolon                                     [Property DelimiterSemicolon]
     + Tab                                           [Property DelimiterTab]
-- CSV file special character/delimiter inside a value:
+
+
+- CSV value contains special character/delimiter:
     + Special character/delimiter present in a value            [Property SpecialCharacter]
     + No special character/delimiter inside a value             [Property NoSpecialCharacter]
-- CSV file quotes inside a value:
+- CSV value contains inner quotes:
     + Present                                                   [Property InnerQuotes]
     + Not present                                               [Property NoInnerQuotes]
-- CSV file empty cells:
+- CSV value empty:
     + Empty cells present as ""                     [If NonEmptyFile]
     + Empty cells present as null                   [If NonEmptyFile]
     + No empty cells
-- CSV file leading whitespace:
+- CSV value contains leading whitespace:
     + Present                                       [If NonEmptyFile]
     + Not present
-- CSV file trailing whitespace:
+- CSV value contains trailing whitespace:
     + Present                                       [If NonEmptyFile]
     + Not present
-- CVS file value quoting:
+- CVS value quoted:
     + Value is not quoted                           [If NonEmptyFile && NoSpecialCharacter] [Property ValueNotQuoted]
-    + All values are quoted                         [Property ValueQuoted]
-- CSV file double-quote escape characters:
+    + Value is quoted                         [Property ValueQuoted]
+- CSV value contains double-quote escape characters:
     + Double-quotes are used                        [If ValueQuoted && InnerQuotes]
     + Double-quotes not used                        [If NonEmptyFile && ((ValueQuoted && NoInnerQuotes) || ValueNotQuoted)]
-- CSV file single-quote escape characters:
+- CSV value contains single-quote escape characters:
     + Single-quotes are used                        [If ValueQuoted && InnerQuotes]
     + Single-quotes not used                        [If NonEmptyFile && NoInnerQuotes]
