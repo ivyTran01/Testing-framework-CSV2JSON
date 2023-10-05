@@ -91,10 +91,11 @@
       <basechoices />
       <invalidValues />
     </Parameter>
-    <Parameter id="12" name="file_space_after_delimiter" type="2">
+    <Parameter id="12" name="value_data_type" type="1">
       <values>
-        <value>true</value>
-        <value>false</value>
+        <value>string</value>
+        <value>number</value>
+        <value>bool</value>
       </values>
       <basechoices />
       <invalidValues />
@@ -130,18 +131,6 @@
         <Parameter name="value_empty_string" />
         <Parameter name="file_size" />
         <Parameter name="file_header" />
-      </Parameters>
-    </Constraint>
-    <Constraint text="(value_leading_whitespace = true) =&gt; (file_size != 0)">
-      <Parameters>
-        <Parameter name="value_leading_whitespace" />
-        <Parameter name="file_size" />
-      </Parameters>
-    </Constraint>
-    <Constraint text="(value_trailing_whitespace = true) =&gt; (file_size != 0)">
-      <Parameters>
-        <Parameter name="value_trailing_whitespace" />
-        <Parameter name="file_size" />
       </Parameters>
     </Constraint>
     <Constraint text="(value_quoted = false) =&gt; (file_size != 0 &amp;&amp; value_contains_special_character = false)">
@@ -190,6 +179,18 @@
         <Parameter name="value_contains_escape_double_quotes" />
       </Parameters>
     </Constraint>
+    <Constraint text="(value_leading_whitespace = true) =&gt; (file_size = 2)">
+      <Parameters>
+        <Parameter name="value_leading_whitespace" />
+        <Parameter name="file_size" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(value_trailing_whitespace = true) =&gt; (file_size = 2)">
+      <Parameters>
+        <Parameter name="value_trailing_whitespace" />
+        <Parameter name="file_size" />
+      </Parameters>
+    </Constraint>
   </Constraints>
   <Testset doi="2">
     <Testcase TCNo="0">
@@ -205,7 +206,7 @@
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
-      <Value>false</Value>
+      <Value>number</Value>
     </Testcase>
     <Testcase TCNo="1">
       <Value>2</Value>
@@ -216,11 +217,11 @@
       <Value>true</Value>
       <Value>false</Value>
       <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
       <Value>true</Value>
       <Value>true</Value>
-      <Value>true</Value>
-      <Value>true</Value>
-      <Value>true</Value>
+      <Value>bool</Value>
     </Testcase>
     <Testcase TCNo="2">
       <Value>3</Value>
@@ -231,11 +232,11 @@
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
-      <Value>true</Value>
+      <Value>false</Value>
       <Value>false</Value>
       <Value>true</Value>
       <Value>false</Value>
-      <Value>true</Value>
+      <Value>string</Value>
     </Testcase>
     <Testcase TCNo="3">
       <Value>4</Value>
@@ -246,56 +247,56 @@
       <Value>true</Value>
       <Value>false</Value>
       <Value>false</Value>
-      <Value>false</Value>
+      <Value>true</Value>
       <Value>true</Value>
       <Value>false</Value>
       <Value>false</Value>
-      <Value>true</Value>
+      <Value>bool</Value>
     </Testcase>
     <Testcase TCNo="4">
       <Value>5</Value>
       <Value>2</Value>
       <Value>false</Value>
       <Value>semicolon</Value>
-      <Value>true</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>true</Value>
       <Value>false</Value>
       <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>string</Value>
     </Testcase>
     <Testcase TCNo="5">
       <Value>6</Value>
       <Value>2</Value>
       <Value>true</Value>
       <Value>tab</Value>
-      <Value>false</Value>
+      <Value>true</Value>
       <Value>true</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>true</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>number</Value>
     </Testcase>
     <Testcase TCNo="6">
       <Value>7</Value>
       <Value>2</Value>
-      <Value>false</Value>
+      <Value>true</Value>
       <Value>comma</Value>
       <Value>true</Value>
-      <Value>true</Value>
       <Value>false</Value>
       <Value>false</Value>
-      <Value>true</Value>
+      <Value>false</Value>
       <Value>true</Value>
       <Value>true</Value>
       <Value>true</Value>
       <Value>false</Value>
+      <Value>string</Value>
     </Testcase>
     <Testcase TCNo="7">
       <Value>8</Value>
@@ -310,10 +311,40 @@
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
-      <Value>true</Value>
+      <Value>number</Value>
     </Testcase>
     <Testcase TCNo="8">
       <Value>9</Value>
+      <Value>2</Value>
+      <Value>false</Value>
+      <Value>tab</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>bool</Value>
+    </Testcase>
+    <Testcase TCNo="9">
+      <Value>10</Value>
+      <Value>2</Value>
+      <Value>false</Value>
+      <Value>semicolon</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>string</Value>
+    </Testcase>
+    <Testcase TCNo="10">
+      <Value>11</Value>
       <Value>1</Value>
       <Value>false</Value>
       <Value>comma</Value>
@@ -325,12 +356,12 @@
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
-      <Value>false</Value>
+      <Value>bool</Value>
     </Testcase>
-    <Testcase TCNo="9">
-      <Value>10</Value>
+    <Testcase TCNo="11">
+      <Value>12</Value>
       <Value>2</Value>
-      <Value>true</Value>
+      <Value>false</Value>
       <Value>tab</Value>
       <Value>false</Value>
       <Value>false</Value>
@@ -340,10 +371,10 @@
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
-      <Value>false</Value>
+      <Value>bool</Value>
     </Testcase>
-    <Testcase TCNo="10">
-      <Value>11</Value>
+    <Testcase TCNo="12">
+      <Value>13</Value>
       <Value>2</Value>
       <Value>true</Value>
       <Value>comma</Value>
@@ -355,10 +386,10 @@
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
-      <Value>true</Value>
+      <Value>string</Value>
     </Testcase>
-    <Testcase TCNo="11">
-      <Value>12</Value>
+    <Testcase TCNo="13">
+      <Value>14</Value>
       <Value>1</Value>
       <Value>false</Value>
       <Value>semicolon</Value>
@@ -370,52 +401,52 @@
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
-      <Value>false</Value>
-    </Testcase>
-    <Testcase TCNo="12">
-      <Value>13</Value>
-      <Value>1</Value>
-      <Value>false</Value>
-      <Value>tab</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>true</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>true</Value>
-    </Testcase>
-    <Testcase TCNo="13">
-      <Value>14</Value>
-      <Value>1</Value>
-      <Value>false</Value>
-      <Value>tab</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>false</Value>
-      <Value>true</Value>
-      <Value>true</Value>
-      <Value>false</Value>
-      <Value>true</Value>
+      <Value>number</Value>
     </Testcase>
     <Testcase TCNo="14">
       <Value>15</Value>
       <Value>1</Value>
-      <Value>true</Value>
+      <Value>false</Value>
       <Value>tab</Value>
       <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>bool</Value>
+    </Testcase>
+    <Testcase TCNo="15">
+      <Value>16</Value>
+      <Value>2</Value>
+      <Value>false</Value>
+      <Value>semicolon</Value>
+      <Value>true</Value>
       <Value>true</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>number</Value>
+    </Testcase>
+    <Testcase TCNo="16">
+      <Value>17</Value>
+      <Value>2</Value>
+      <Value>false</Value>
+      <Value>comma</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
       <Value>false</Value>
       <Value>true</Value>
       <Value>true</Value>
-      <Value>false</Value>
+      <Value>number</Value>
     </Testcase>
   </Testset>
   <Header>
@@ -431,14 +462,14 @@
     <Value>VALUE_TRAILING_WHITESPACE</Value>
     <Value>VALUE_QUOTED</Value>
     <Value>VALUE_CONTAINS_ESCAPE_DOUBLE_QUOTES</Value>
-    <Value>FILE_SPACE_AFTER_DELIMITER</Value>
+    <Value>VALUE_DATA_TYPE</Value>
   </Header>
   <Stat-Data>
-    <ExecutionTime>0.03</ExecutionTime>
+    <ExecutionTime>0.016</ExecutionTime>
     <MaxDomainSize>3</MaxDomainSize>
     <MinDomainSize>2</MinDomainSize>
-    <TotalNoOfCombination>270</TotalNoOfCombination>
-    <TotalNoOfTests>15</TotalNoOfTests>
+    <TotalNoOfCombination>291</TotalNoOfCombination>
+    <TotalNoOfTests>17</TotalNoOfTests>
     <Algorithm>IPOG</Algorithm>
   </Stat-Data>
 </System>
