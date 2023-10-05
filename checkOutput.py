@@ -1,8 +1,8 @@
 import pandas
 
-utf16_path = "TestData/ActualOutput_utf16/test.json"
-utf8_path = "TestData/ActualOutput_utf8/test.json"
-expected_path = "TestData/ExpectedOutput/test.json"
+utf16_path = "TestData/ActualOutput_utf16/test0.json"
+utf8_path = "TestData/ActualOutput_utf8/test0.json"
+expected_path = "TestData/ExpectedOutput/test0.json"
 
 def remove_linebreaks():
     df = pandas.read_json(utf16_path, encoding='utf-16')
