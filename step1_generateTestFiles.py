@@ -10,11 +10,11 @@ EXPECTED_FILE_PATH_PREFIX = "TestData/ExpectedOutput/test"
 EXPECTED_FILE_PATH_SUFFIX = ".json"
 
 DATA_TEMPLATE = [
-    ["name", "age", "ice_cream_lover", "height"],
-    ["Ivy", "22", "true", "5.2"],
+    ["name", "age", "ice cream lover", "height"],
+    ["Ivy T.", "22", "true", "5.2"],
     ["Tanzil", "25", "false", "5.9"],
-    ["Danny", "21", "true", "5.11"],
-    ["Abdullah", "23", "true", "5.10"],
+    ["Danny Yu", "21", "true", "5.11"],
+    ["Abdullah Amjad", "23", "true", "5.10"],
     ["Jocelyn", "22", "true", "5.2"],
     ["Christ", "23", "false", "5.10"]
 ]
@@ -122,7 +122,7 @@ def writeAllTestFiles(testFrames):
             if quotingOption == csv.QUOTE_MINIMAL:
                 csv_writer = csv.writer(file, quoting=quotingOption, delimiter=delimiterOption)
             else:
-                csv_writer = csv.writer(file, quoting=quotingOption, quotechar=' ', delimiter=delimiterOption)
+                csv_writer = csv.writer(file, quoting=quotingOption, quotechar=' ', delimiter=delimiterOption, escapechar=' ')
             for record in testData:
                 csv_writer.writerow(record)
 
@@ -142,6 +142,7 @@ def writeAllExpectedOutput(testFrames):
                              sep=delimiter,
                              skipinitialspace=True)
 
+        df.rename(columns={"Unnamed: 0": "field1", "Unnamed: 1": "field2", "Unnamed: 2": "field3", "Unnamed: 3": "field4"}, inplace=True)
         df.to_json(getExpectedFilePath(index), orient='records', indent=1)
 
 

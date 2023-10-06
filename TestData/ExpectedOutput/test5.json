@@ -1,38 +1,38 @@
 [
  {
-  "name":"Ivy",
+  "name":"Ivy T.",
   "age":22,
-  "ice_cream_lover":true,
+  "ice cream lover":true,
   "height":" 5.2,"
  },
  {
   "name":"Tanzil",
   "age":25,
-  "ice_cream_lover":false,
+  "ice cream lover":false,
   "height":"5.9"
  },
  {
-  "name":"Danny",
+  "name":"Danny Yu",
   "age":21,
-  "ice_cream_lover":true,
+  "ice cream lover":true,
   "height":"5.11"
  },
  {
-  "name":"Abdullah",
+  "name":"Abdullah Amjad",
   "age":23,
-  "ice_cream_lover":true,
+  "ice cream lover":true,
   "height":"5.10"
  },
  {
   "name":"Jocelyn",
   "age":22,
-  "ice_cream_lover":true,
+  "ice cream lover":true,
   "height":"5.2"
  },
  {
   "name":"Christ",
   "age":23,
-  "ice_cream_lover":false,
+  "ice cream lover":false,
   "height":"5.10"
  }
 ]
