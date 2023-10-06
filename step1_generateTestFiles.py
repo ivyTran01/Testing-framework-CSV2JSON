@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 import csv
 import copy
@@ -16,7 +15,8 @@ DATA_TEMPLATE = [
     ["Danny Yu", "21", "true", "5.11"],
     ["Abdullah Amjad", "23", "true", "5.10"],
     ["Jocelyn", "22", "true", "5.2"],
-    ["Christ", "23", "false", "5.10"]
+    ["Christ", "23", "false", "5.10"],
+    ["Monica", "50", "true", "5.41"]
 ]
 
 
@@ -74,6 +74,9 @@ def generateTest(specs):
         data[0][column] = ""
     if specs['file_contains_empty_field_value']:
         data[3][column] = ""
+    # -------------------------------------
+    if specs['file_missing_columns']:
+        data[5] = ["Christ"]
     # -------------------------------------
     if specs['value_empty_string']:
         if specs['file_size'] == 1:

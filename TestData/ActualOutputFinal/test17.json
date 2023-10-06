@@ -1,38 +1,44 @@
 [
  {
   "field1":"Ivy T.",
-  "field2":22,
-  "field3":true,
+  "field2":22.0,
+  "field3":1.0,
   "field4":5.2
  },
  {
   "field1":"Tanzil",
-  "field2":25,
-  "field3":false,
-  "field4":"5.9 \"inside\" end "
+  "field2":25.0,
+  "field3":0.0,
+  "field4":"5.9, \"inside\" end "
  },
  {
   "field1":"Danny Yu",
-  "field2":21,
-  "field3":true,
+  "field2":21.0,
+  "field3":1.0,
   "field4":5.11
  },
  {
   "field1":"Abdullah Amjad",
-  "field2":23,
-  "field3":true,
-  "field4":""
+  "field2":23.0,
+  "field3":1.0,
+  "field4":5.1
  },
  {
   "field1":"Jocelyn",
-  "field2":22,
-  "field3":true,
+  "field2":22.0,
+  "field3":1.0,
   "field4":5.2
  },
  {
   "field1":"Christ",
-  "field2":23,
-  "field3":false,
-  "field4":5.1
+  "field2":null,
+  "field3":null,
+  "field4":null
+ },
+ {
+  "field1":"Monica",
+  "field2":50.0,
+  "field3":1.0,
+  "field4":5.41
  }
 ]

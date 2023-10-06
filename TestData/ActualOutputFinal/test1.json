@@ -1,38 +1,44 @@
 [
  {
   "field1":" Ivy T.\t \"inside\" end ",
-  "age":22,
-  "ice cream lover":true,
+  "age":22.0,
+  "ice cream lover":1.0,
   "height":5.2
  },
  {
   "field1":"Tanzil",
-  "age":25,
-  "ice cream lover":false,
+  "age":25.0,
+  "ice cream lover":0.0,
   "height":5.9
  },
  {
   "field1":"",
-  "age":21,
-  "ice cream lover":true,
+  "age":21.0,
+  "ice cream lover":1.0,
   "height":5.11
  },
  {
   "field1":"Abdullah Amjad",
-  "age":23,
-  "ice cream lover":true,
+  "age":23.0,
+  "ice cream lover":1.0,
   "height":5.1
- },
- {
-  "field1":"Jocelyn",
-  "age":22,
-  "ice cream lover":true,
-  "height":5.2
  },
  {
   "field1":"Christ",
-  "age":23,
-  "ice cream lover":false,
+  "age":null,
+  "ice cream lover":null,
+  "height":null
+ },
+ {
+  "field1":"Christ",
+  "age":23.0,
+  "ice cream lover":0.0,
   "height":5.1
+ },
+ {
+  "field1":"Monica",
+  "age":50.0,
+  "ice cream lover":1.0,
+  "height":5.41
  }
 ]

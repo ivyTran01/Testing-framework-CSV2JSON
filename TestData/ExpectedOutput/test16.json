@@ -34,5 +34,11 @@
   "age":23,
   "ice cream lover":false,
   "height":5.1
+ },
+ {
+  "name":"Monica",
+  "age":50,
+  "ice cream lover":true,
+  "height":5.41
  }
 ]

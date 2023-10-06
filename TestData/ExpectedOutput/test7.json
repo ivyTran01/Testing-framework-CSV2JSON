@@ -31,8 +31,14 @@
  },
  {
   "field1":"Christ",
-  "field2":23.0,
-  "field3":false,
-  "field4":5.1
+  "field2":null,
+  "field3":null,
+  "field4":null
+ },
+ {
+  "field1":"Monica",
+  "field2":50.0,
+  "field3":true,
+  "field4":5.41
  }
 ]

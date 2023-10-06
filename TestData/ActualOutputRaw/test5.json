@@ -3,6 +3,7 @@
 {"name":"Tanzil","age":25,"ice cream lover":false,"field4":5.9},
 {"name":"Danny Yu","age":21,"ice cream lover":true,"field4":5.11},
 {"name":"Abdullah Amjad","age":23,"ice cream lover":true,"field4":5.1},
-{"name":"Jocelyn","age":22,"ice cream lover":true,"field4":5.2},
-{"name":"Christ","age":23,"ice cream lover":false,"field4":5.1}
+{"name":"Christ"},
+{"name":"Christ","age":23,"ice cream lover":false,"field4":5.1},
+{"name":"Monica","age":50,"ice cream lover":true,"field4":5.41}
 ]
