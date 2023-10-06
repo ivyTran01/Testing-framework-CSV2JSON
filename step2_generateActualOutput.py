@@ -18,7 +18,8 @@ COMMAND_TEMPLATE = [
     "test_output16",
     "--checkType=true",
     "--delimiter=auto",
-    "--nullObject=true"
+    "--nullObject=true",
+    "--trim=false"
 ]
 
 

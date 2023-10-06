@@ -1,5 +1,5 @@
 [
-{"name":"Ivy","age":" 22\t \"inside\" end","ice_cream_lover":true},
+{"name":"Ivy","age":" 22\t \"inside\" end ","ice_cream_lover":true},
 {"name":"Tanzil","age":25,"ice_cream_lover":false},
 {"name":"Danny","age":21,"ice_cream_lover":true}
 ]

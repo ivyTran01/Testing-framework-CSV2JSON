@@ -1,9 +1,14 @@
+import numpy as np
 import pandas as pd
 import csv
 import copy
 
 TEST_FILE_PATH_PREFIX = "TestData/TestFiles/test"
 TEST_FILE_PATH_SUFFIX = ".csv"
+
+EXPECTED_FILE_PATH_PREFIX = "TestData/ExpectedOutput/test"
+EXPECTED_FILE_PATH_SUFFIX = ".json"
+
 DATA_TEMPLATE = [
     ["name", "age", "ice_cream_lover"],
     ["Ivy", "22", "true"],
@@ -22,17 +27,24 @@ def getTestFilePath(index):
     return TEST_FILE_PATH_PREFIX + str(index) + TEST_FILE_PATH_SUFFIX
 
 
+def getExpectedFilePath(index):
+    return EXPECTED_FILE_PATH_PREFIX + str(index) + EXPECTED_FILE_PATH_SUFFIX
+
+
+def extractDelimiter(row):
+    if row['file_delimiter'] == "comma":
+        return ','
+    elif row['file_delimiter'] == "semicolon":
+        return ';'
+    else:
+        return '\t'
+
+
 def generateTest(specs):
     global data
     headerFlag = specs['file_header']
     file_size = specs['file_size']
-
-    if specs['file_delimiter'] == "comma":
-        file_delimiter = ','
-    elif specs['file_delimiter'] == "semicolon":
-        file_delimiter = ';'
-    else:
-        file_delimiter = '\t'
+    file_delimiter = extractDelimiter(specs)
     # ---------------------------------------------
     if specs['value_data_type'] == "string":
         column = 0
@@ -95,12 +107,11 @@ def generateTest(specs):
     return data, csv.QUOTE_MINIMAL, file_delimiter
 
 
-def main():
-    testFrames = getTestFramesDF()
-
+def writeAllTestFiles(testFrames):
     for index, row in testFrames.iterrows():
         testData, quotingOption, delimiterOption = generateTest(row)
         testPath = getTestFilePath(index)
+
         with open(testPath, mode="w", newline="") as file:
             if quotingOption == csv.QUOTE_MINIMAL:
                 csv_writer = csv.writer(file, quoting=quotingOption, delimiter=delimiterOption)
@@ -108,6 +119,29 @@ def main():
                 csv_writer = csv.writer(file, quoting=quotingOption, quotechar=' ', delimiter=delimiterOption)
             for record in testData:
                 csv_writer.writerow(record)
+
+
+type_dict = {0: np.str_, 1: np.int32, 2: np.bool_}
+
+def writeAllExpectedOutput(testFrames):
+    for index, row in testFrames.iterrows():
+        delimiter = extractDelimiter(row)
+        if not row['file_header']:
+            df = pd.read_csv(getTestFilePath(index),
+                             sep=delimiter,
+                             header=None, names=['field1', 'field2', 'field3'],
+                             skipinitialspace=True)
+        else:
+            df = pd.read_csv(getTestFilePath(index),
+                             sep=delimiter,
+                             skipinitialspace=True)
+
+        df.to_json(getExpectedFilePath(index), orient='records')
+
+def main():
+    testFrames = getTestFramesDF()
+    writeAllTestFiles(testFrames)
+    writeAllExpectedOutput(testFrames)
 
 
 if __name__ == "__main__":
