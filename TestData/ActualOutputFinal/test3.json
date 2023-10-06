@@ -1,1 +1,38 @@
-[{"name":"Ivy","age":22,"ice_cream_lover":" true \"inside\" end "},{"name":"Tanzil","age":25,"ice_cream_lover":false},{"name":"Danny","age":21,"ice_cream_lover":true}]
+[
+ {
+  "field1":"Ivy",
+  "field2":22,
+  "field3":true,
+  "field4":5.2
+ },
+ {
+  "field1":"Tanzil",
+  "field2":25,
+  "field3":" false; ",
+  "field4":5.9
+ },
+ {
+  "field1":"Danny",
+  "field2":21,
+  "field3":true,
+  "field4":5.11
+ },
+ {
+  "field1":"Abdullah",
+  "field2":23,
+  "field3":true,
+  "field4":5.1
+ },
+ {
+  "field1":"Jocelyn",
+  "field2":22,
+  "field3":true,
+  "field4":5.2
+ },
+ {
+  "field1":"Christ",
+  "field2":23,
+  "field3":false,
+  "field4":5.1
+ }
+]

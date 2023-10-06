@@ -10,10 +10,13 @@ EXPECTED_FILE_PATH_PREFIX = "TestData/ExpectedOutput/test"
 EXPECTED_FILE_PATH_SUFFIX = ".json"
 
 DATA_TEMPLATE = [
-    ["name", "age", "ice_cream_lover"],
-    ["Ivy", "22", "true"],
-    ["Tanzil", "25", "false"],
-    ["Danny", "21", "true"]
+    ["name", "age", "ice_cream_lover", "height"],
+    ["Ivy", "22", "true", "5.2"],
+    ["Tanzil", "25", "false", "5.9"],
+    ["Danny", "21", "true", "5.11"],
+    ["Abdullah", "23", "true", "5.10"],
+    ["Jocelyn", "22", "true", "5.2"],
+    ["Christ", "23", "false", "5.10"]
 ]
 
 
@@ -39,19 +42,22 @@ def extractDelimiter(row):
     else:
         return '\t'
 
+def extractTargetColumn(specs):
+    if specs['value_data_type'] == "string":
+        return 0
+    elif specs['value_data_type'] == "bool":
+        return 2
+    elif specs['value_data_type'] == "int":
+        return 1
+    else:
+        return 3
 
 def generateTest(specs):
     global data
     headerFlag = specs['file_header']
     file_size = specs['file_size']
     file_delimiter = extractDelimiter(specs)
-    # ---------------------------------------------
-    if specs['value_data_type'] == "string":
-        column = 0
-    elif specs['value_data_type'] == "number":
-        column = 1
-    else:
-        column = 2
+    column = extractTargetColumn(specs)
     # ---------------------------------------------
     if specs['file_size'] == 1:
         if headerFlag:
@@ -121,7 +127,7 @@ def writeAllTestFiles(testFrames):
                 csv_writer.writerow(record)
 
 
-type_dict = {0: np.str_, 1: np.int32, 2: np.bool_}
+# type_dict = {0: np.str_, 1: np.int32, 2: np.bool_}
 
 def writeAllExpectedOutput(testFrames):
     for index, row in testFrames.iterrows():
@@ -129,14 +135,15 @@ def writeAllExpectedOutput(testFrames):
         if not row['file_header']:
             df = pd.read_csv(getTestFilePath(index),
                              sep=delimiter,
-                             header=None, names=['field1', 'field2', 'field3'],
+                             header=None, names=['field1', 'field2', 'field3', 'field4'],
                              skipinitialspace=True)
         else:
             df = pd.read_csv(getTestFilePath(index),
                              sep=delimiter,
                              skipinitialspace=True)
 
-        df.to_json(getExpectedFilePath(index), orient='records')
+        df.to_json(getExpectedFilePath(index), orient='records', indent=1)
+
 
 def main():
     testFrames = getTestFramesDF()

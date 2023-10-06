@@ -58,7 +58,7 @@ def finalizeOutput():
     testFrames = getTestFramesDF()
     for index, _ in testFrames.iterrows():
         df = pd.read_json(getOutputRawPath(index))
-        df.to_json(getOutputFinalPath(index), orient='records')
+        df.to_json(getOutputFinalPath(index), orient='records', indent=1)
 
 
 def main():

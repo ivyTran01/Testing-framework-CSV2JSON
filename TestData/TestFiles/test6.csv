@@ -1,4 +1,1 @@
-name,age,ice_cream_lover
-" Ivy, ",22,true
-Tanzil,25,false
-Danny,21,true
+name;"age; ""inside"" end";ice_cream_lover;height

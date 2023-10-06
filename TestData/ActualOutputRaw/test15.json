@@ -1,5 +1,3 @@
 [
-{"field1":"Ivy","field2":22,"field3":true},
-{"field1":"Tanzil","field2":"25; \"inside\" end ","field3":false},
-{"field1":"Danny","field2":21,"field3":true}
+{"field1":"Ivy","field2":null,"field3":true,"field4":5.2}
 ]

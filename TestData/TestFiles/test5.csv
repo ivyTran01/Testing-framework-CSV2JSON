@@ -1,4 +1,7 @@
-name	age	ice_cream_lover
-Ivy	" 22	 ""inside"" end "	true
-Tanzil	25	false
-Danny	21	true
+name,age,ice_cream_lover,height
+Ivy,22,true," 5.2,"
+Tanzil,25,false,5.9
+Danny,21,true,5.11
+Abdullah,23,true,5.10
+Jocelyn,22,true,5.2
+Christ,23,false,5.10
