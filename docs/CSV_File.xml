@@ -125,6 +125,14 @@
       <basechoices />
       <invalidValues />
     </Parameter>
+    <Parameter id="17" name="file_contains_extra_values" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
   </Parameters>
   <OutputParameters />
   <Relations />
@@ -234,6 +242,12 @@
         <Parameter name="file_size" />
       </Parameters>
     </Constraint>
+    <Constraint text="(file_contains_extra_values = true) =&gt; (file_size = 2)">
+      <Parameters>
+        <Parameter name="file_contains_extra_values" />
+        <Parameter name="file_size" />
+      </Parameters>
+    </Constraint>
   </Constraints>
   <Testset doi="2">
     <Testcase TCNo="0">
@@ -250,6 +264,7 @@
       <Value>false</Value>
       <Value>false</Value>
       <Value>string</Value>
+      <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
@@ -271,6 +286,7 @@
       <Value>true</Value>
       <Value>true</Value>
       <Value>true</Value>
+      <Value>true</Value>
     </Testcase>
     <Testcase TCNo="2">
       <Value>3</Value>
@@ -286,6 +302,7 @@
       <Value>true</Value>
       <Value>true</Value>
       <Value>bool</Value>
+      <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
@@ -307,6 +324,7 @@
       <Value>false</Value>
       <Value>true</Value>
       <Value>true</Value>
+      <Value>true</Value>
     </Testcase>
     <Testcase TCNo="4">
       <Value>5</Value>
@@ -322,6 +340,7 @@
       <Value>false</Value>
       <Value>false</Value>
       <Value>double</Value>
+      <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
@@ -343,6 +362,7 @@
       <Value>true</Value>
       <Value>false</Value>
       <Value>true</Value>
+      <Value>false</Value>
     </Testcase>
     <Testcase TCNo="6">
       <Value>7</Value>
@@ -359,6 +379,7 @@
       <Value>true</Value>
       <Value>int</Value>
       <Value>true</Value>
+      <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
     </Testcase>
@@ -379,6 +400,7 @@
       <Value>false</Value>
       <Value>true</Value>
       <Value>true</Value>
+      <Value>true</Value>
     </Testcase>
     <Testcase TCNo="8">
       <Value>9</Value>
@@ -394,6 +416,7 @@
       <Value>false</Value>
       <Value>false</Value>
       <Value>string</Value>
+      <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
@@ -415,6 +438,7 @@
       <Value>true</Value>
       <Value>true</Value>
       <Value>false</Value>
+      <Value>true</Value>
     </Testcase>
     <Testcase TCNo="10">
       <Value>11</Value>
@@ -431,6 +455,7 @@
       <Value>false</Value>
       <Value>double</Value>
       <Value>false</Value>
+      <Value>true</Value>
       <Value>true</Value>
       <Value>true</Value>
     </Testcase>
@@ -451,6 +476,7 @@
       <Value>true</Value>
       <Value>false</Value>
       <Value>false</Value>
+      <Value>true</Value>
     </Testcase>
     <Testcase TCNo="12">
       <Value>13</Value>
@@ -469,6 +495,7 @@
       <Value>true</Value>
       <Value>true</Value>
       <Value>false</Value>
+      <Value>false</Value>
     </Testcase>
     <Testcase TCNo="13">
       <Value>14</Value>
@@ -484,6 +511,7 @@
       <Value>false</Value>
       <Value>false</Value>
       <Value>bool</Value>
+      <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
@@ -505,6 +533,7 @@
       <Value>false</Value>
       <Value>false</Value>
       <Value>true</Value>
+      <Value>true</Value>
     </Testcase>
     <Testcase TCNo="15">
       <Value>16</Value>
@@ -523,11 +552,12 @@
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
+      <Value>false</Value>
     </Testcase>
     <Testcase TCNo="16">
       <Value>17</Value>
       <Value>2</Value>
-      <Value>true</Value>
+      <Value>false</Value>
       <Value>comma</Value>
       <Value>false</Value>
       <Value>false</Value>
@@ -541,6 +571,7 @@
       <Value>false</Value>
       <Value>false</Value>
       <Value>false</Value>
+      <Value>true</Value>
     </Testcase>
     <Testcase TCNo="17">
       <Value>18</Value>
@@ -557,8 +588,9 @@
       <Value>true</Value>
       <Value>double</Value>
       <Value>false</Value>
-      <Value>false</Value>
       <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
     </Testcase>
   </Testset>
   <Header>
@@ -578,12 +610,13 @@
     <Value>FILE_CONTAINS_EMPTY_FIELD_HEADER</Value>
     <Value>FILE_CONTAINS_EMPTY_FIELD_VALUE</Value>
     <Value>FILE_MISSING_COLUMNS</Value>
+    <Value>FILE_CONTAINS_EXTRA_VALUES</Value>
   </Header>
   <Stat-Data>
     <ExecutionTime>0.015</ExecutionTime>
     <MaxDomainSize>4</MaxDomainSize>
     <MinDomainSize>2</MinDomainSize>
-    <TotalNoOfCombination>485</TotalNoOfCombination>
+    <TotalNoOfCombination>550</TotalNoOfCombination>
     <TotalNoOfTests>18</TotalNoOfTests>
     <Algorithm>IPOG</Algorithm>
   </Stat-Data>
