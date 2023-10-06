@@ -69,6 +69,11 @@ def generateTest(specs):
             data = copy.deepcopy(DATA_TEMPLATE[:])
         else:
             data = copy.deepcopy(DATA_TEMPLATE[1:])
+    # ---------------------------------------------
+    if specs['file_contains_empty_field_header']:
+        data[0][column] = ""
+    if specs['file_contains_empty_field_value']:
+        data[3][column] = ""
     # -------------------------------------
     if specs['value_empty_string']:
         if specs['file_size'] == 1:
